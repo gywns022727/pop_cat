@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
     }
     @font-face {
         font-family: "cat";
-        src: url(".subset-Nunito-Black.4fb0eeff.woff2") format("woff2");
+        src: url(".subset-Nunito-Black.4fb0eeff.woff2") format("font-woff2");
     }
 `;
 
