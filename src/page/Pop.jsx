@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useLocation, useNavigate } from "react-router-dom";
 import bk from "../assets/images/bk.jpeg";
 
 export default function Pop() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state === null) {
+      navigate("/");
+    }
+  }, [navigate, location]);
   return <Wrap></Wrap>;
 }
 

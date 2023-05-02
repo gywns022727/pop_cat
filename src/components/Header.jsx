@@ -3,11 +3,14 @@ import styled from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Logo from "../assets/images/popcatLog.svg";
+import ToastifyIcon from "../assets/images/op.png";
 
 export default function Header() {
   const clip = () => {
     navigator.clipboard.writeText(window.location.href);
-    toast.success("링크 복사가 완료되었습니다.");
+    toast.success("링크 복사가 완료되었습니다.", {
+      icon: <Icon src={ToastifyIcon} />,
+    });
   };
   return (
     <>
@@ -20,10 +23,16 @@ export default function Header() {
       </Wrap>
       <ToastContainer
         position="top-center"
-        autoClose={1000}
-        closeOnClick
+        autoClose={800}
+        limit={1}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
         pauseOnFocusLoss={false}
-        draggable
+        draggable={false}
+        pauseOnHover={false}
+        theme="light"
       />
     </>
   );
@@ -34,6 +43,9 @@ const Wrap = styled.div`
   height: 100px;
   display: flex;
   justify-content: space-around;
+  > div {
+    width: 30px;
+  }
 
   > img {
     width: 150px;
@@ -43,4 +55,8 @@ const Wrap = styled.div`
     filter: invert(100%) sepia(0%) saturate(7417%) hue-rotate(158deg)
       brightness(119%) contrast(112%);
   }
+`;
+
+const Icon = styled.img`
+  width: 20px;
 `;
