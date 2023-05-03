@@ -76,7 +76,7 @@ const CatImg = styled.img`
 `;
 
 const Count = styled.h1`
-  font-size: 30px;
+  font-size: 2.5rem;
   font-weight: bold;
   -webkit-text-stroke: 1px #000;
 `;

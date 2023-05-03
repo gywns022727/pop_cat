@@ -9,7 +9,9 @@ const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         user-select: none;
     }
-
+    ul, li {
+        list-style: none;
+    }
     img{
         vertical-align: middle;
     }

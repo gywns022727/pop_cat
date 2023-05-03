@@ -53,7 +53,7 @@ export default function Login() {
           >
             <option value="">나라를 선택해 주세요.</option>
             <option value={"한국"}>한국</option>
-            <option value={"중국"}>중국</option>
+            <option value={"미국"}>미국</option>
             <option value={"일본"}>일본</option>
           </select>
           {errors.country && <Error>나라를 선택해 주세요.</Error>}
