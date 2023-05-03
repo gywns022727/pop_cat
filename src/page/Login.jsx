@@ -128,7 +128,7 @@ const Wrap = styled.div`
       color: #fff;
       border: none;
       border-radius: 50px;
-      background-color: pink;
+      background-color: #ffc500;
     }
   }
 `;

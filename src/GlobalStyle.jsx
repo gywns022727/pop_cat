@@ -7,15 +7,11 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         color: inherit;
         text-decoration: none;
-        font-family: "cat";
+        user-select: none;
     }
 
     img{
         vertical-align: middle;
-    }
-    @font-face {
-        font-family: "cat";
-        src: url(".subset-Nunito-Black.4fb0eeff.woff2") format("font-woff2");
     }
 `;
 
