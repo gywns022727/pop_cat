@@ -16,11 +16,11 @@ export default function Rank() {
 
   return (
     <Wrap>
-      <RrackIcon onClick={clickRank}>🏆</RrackIcon>
+      <RankIcon onClick={clickRank}>🏆</RankIcon>
       {menu ? (
-        <RackList>
+        <RankList>
           <RankBox onClick={clickRank}>
-            <RrackIcon onClick={clickRank} />
+            <RankIcon onClick={clickRank} />
             <ul>
               <li>
                 <div>
@@ -30,19 +30,19 @@ export default function Rank() {
               </li>
               <li>
                 <div>
-                  🥈 <img src={Usa} alt="korea" />
+                  🥈 <img src={Usa} alt="Usa" />
                 </div>
                 318,923
               </li>
               <li>
                 <div>
-                  🥉 <img src={Japan} alt="korea" />
+                  🥉 <img src={Japan} alt="Japan" />
                 </div>
                 923
               </li>
             </ul>
           </RankBox>
-        </RackList>
+        </RankList>
       ) : (
         ""
       )}
@@ -53,7 +53,7 @@ const Wrap = styled.div`
   padding: 20px;
 `;
 
-const RrackIcon = styled.div`
+const RankIcon = styled.div`
   width: 20px;
   font-size: 30px;
 `;
@@ -85,7 +85,7 @@ const RankBox = styled.div`
   }
 `;
 
-const RackList = styled.div`
+const RankList = styled.div`
   padding: 20px;
   position: absolute;
   top: 0;
