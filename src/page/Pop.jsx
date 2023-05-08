@@ -5,28 +5,26 @@ import { useLocation, useNavigate } from "react-router-dom";
 import bk from "../assets/images/bk.jpeg";
 import P from "../assets/images/p.png";
 import Op from "../assets/images/op.png";
-import Popsound from "../assets/sound/popSound.mp3";
+// import Popsound from "../assets/sound/popSound.mp3";
 
 export default function Pop() {
-  const audio = new Audio(Popsound);
+  // const audio = new Audio(Popsound);
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(() => {
-    if (location.state === null) {
-      navigate("/");
-    }
-  }, [navigate, location]);
+  // useEffect(() => {
+  //   if (location.state === null) {
+  //     navigate("/");
+  //   }
+  // }, [navigate, location]);
 
   const [imgState, setImgState] = useState(true);
   const [count, setCount] = useState(0);
-  const click = () => {
-    setCount(count + 1);
-  };
   const start = () => {
+    setCount(count + 1);
     setImgState(!imgState);
-    audio.play();
+    // audio.play();
   };
   const end = () => {
     setImgState(true);
@@ -34,12 +32,11 @@ export default function Pop() {
 
   return (
     <Wrap>
-      <Header />
+      <Header count={count} />
       <Count>{count}</Count>
       <CatImg
         src={imgState ? P : Op}
         alt="p"
-        onClick={click}
         onTouchStart={start}
         onTouchEnd={end}
       />

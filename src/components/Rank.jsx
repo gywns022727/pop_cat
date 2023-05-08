@@ -1,44 +1,68 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Korea from "../assets/images/korea.svg";
 import Japan from "../assets/images/japan.svg";
 import Usa from "../assets/images/usa.svg";
+import axios from "axios";
 
-export default function Rank() {
+export default function Rank(count) {
+  // console.log(count);
+  const [countNum, setCountNum] = useState(0);
   const [menu, setMenu] = useState(false);
-  const clickRank = () => {
+
+  const clickRank = async () => {
     if (menu === true) {
       setMenu(!menu);
     } else {
       setMenu(true);
     }
+    await axios({
+      method: "POST",
+      url: "https://bc19-2001-2d8-e259-a6fc-605d-18af-8f5b-3813.ngrok-free.app/count",
+      mode: "cors",
+      data: count,
+    });
   };
+  useEffect(() => {
+    axios
+      .post(
+        "https://bc19-2001-2d8-e259-a6fc-605d-18af-8f5b-3813.ngrok-free.app/total"
+      )
+      .then((total) => {
+        // setCountNum(count);
+        console.log(total);
+      });
+  }, [countNum]);
 
   return (
-    <Wrap>
-      <RankIcon onClick={clickRank}>🏆</RankIcon>
+    <div>
+      <Box method="post" onClick={clickRank}>
+        🏆
+      </Box>
       {menu ? (
         <RankList>
           <RankBox onClick={clickRank}>
-            <RankIcon onClick={clickRank} />
             <ul>
               <li>
-                <div>
-                  🥇 <img src={Korea} alt="korea" />
-                </div>
-                9,129,318,923
+                <div>🥇</div>
+                <p>
+                  <img src={Korea} alt="korea" />
+                  {countNum}
+                </p>
               </li>
               <li>
-                <div>
-                  🥈 <img src={Usa} alt="Usa" />
-                </div>
-                318,923
+                <div>🥈</div>
+                <p>
+                  <img src={Usa} alt="Usa" />
+                  {countNum}
+                </p>
               </li>
               <li>
-                <div>
-                  🥉 <img src={Japan} alt="Japan" />
-                </div>
-                923
+                <div>🥉</div>
+                <p>
+                  <img src={Japan} alt="Japan" />
+                  {countNum}
+                </p>
               </li>
             </ul>
           </RankBox>
@@ -46,15 +70,11 @@ export default function Rank() {
       ) : (
         ""
       )}
-    </Wrap>
+    </div>
   );
 }
-const Wrap = styled.div`
-  padding: 20px;
-`;
 
-const RankIcon = styled.div`
-  width: 20px;
+const Box = styled.div`
   font-size: 30px;
 `;
 
@@ -74,7 +94,14 @@ const RankBox = styled.div`
       color: #000;
       height: 50px;
       > div {
+        padding-right: 5px;
         line-height: 25px;
+      }
+      > p {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         > img {
           width: 25px;
           border-radius: 5px;

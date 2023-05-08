@@ -25,11 +25,11 @@ export default function Login() {
   let check = useRef(false);
 
   const login = async (data) => {
+    console.log(data);
     await axios({
       method: "POST",
-      url: "https://d391-2001-2d8-ea5d-ddd8-4886-fe3e-ed0a-e834.ngrok-free.app/count",
+      url: "https://bc19-2001-2d8-e259-a6fc-605d-18af-8f5b-3813.ngrok-free.app/",
       mode: "cors",
-      headers: {},
       data: data,
     });
     // console.log(postData);
@@ -41,6 +41,8 @@ export default function Login() {
         });
         await new Promise((r) => setTimeout(r, 2000));
         link(true);
+      } else {
+        check.current = false;
       }
     }
   };
@@ -48,12 +50,12 @@ export default function Login() {
   useEffect(() => {
     axios
       .post(
-        "https://d391-2001-2d8-ea5d-ddd8-4886-fe3e-ed0a-e834.ngrok-free.app/count"
+        "https://bc19-2001-2d8-e259-a6fc-605d-18af-8f5b-3813.ngrok-free.app/"
       )
       .then((response) => {
         setResponse(response);
       });
-  }, []);
+  }, [response]);
 
   return (
     <>
