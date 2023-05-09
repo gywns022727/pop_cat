@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -8,11 +8,8 @@ import Header from "../components/Header";
 import bk from "../assets/images/bk.jpeg";
 import Cat from "../assets/images/p.png";
 import ToastifyIcon from "../assets/images/op.png";
-import axios from "axios";
 
 export default function Login() {
-  const [response, setResponse] = useState();
-
   const {
     register,
     handleSubmit,
@@ -22,40 +19,13 @@ export default function Login() {
   const navigate = useNavigate();
   const link = (status) => navigate("/pop", { state: status });
 
-  let check = useRef(false);
-
-  const login = async (data) => {
-    console.log(data);
-    await axios({
-      method: "POST",
-      url: "https://bc19-2001-2d8-e259-a6fc-605d-18af-8f5b-3813.ngrok-free.app/",
-      mode: "cors",
-      data: data,
+  const login = async () => {
+    toast.success("고양이를 클릭해 주세요!", {
+      icon: <Icon src={ToastifyIcon} />,
     });
-    // console.log(postData);
-    if (!check.current) {
-      check.current = false;
-      if (response.status === 200) {
-        toast.success("고양이를 클릭해 주세요!", {
-          icon: <Icon src={ToastifyIcon} />,
-        });
-        await new Promise((r) => setTimeout(r, 2000));
-        link(true);
-      } else {
-        check.current = false;
-      }
-    }
+    await new Promise((r) => setTimeout(r, 2000));
+    link(true);
   };
-
-  useEffect(() => {
-    axios
-      .post(
-        "https://bc19-2001-2d8-e259-a6fc-605d-18af-8f5b-3813.ngrok-free.app/"
-      )
-      .then((response) => {
-        setResponse(response);
-      });
-  }, [response]);
 
   return (
     <>

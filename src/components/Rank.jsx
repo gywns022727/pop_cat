@@ -1,38 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Korea from "../assets/images/korea.svg";
 import Japan from "../assets/images/japan.svg";
 import Usa from "../assets/images/usa.svg";
-import axios from "axios";
 
 export default function Rank(count) {
-  // console.log(count);
   const [countNum, setCountNum] = useState(0);
   const [menu, setMenu] = useState(false);
-
-  const clickRank = async () => {
+  const clickRank = () => {
     if (menu === true) {
       setMenu(!menu);
     } else {
+      setCountNum(count.count);
       setMenu(true);
     }
-    await axios({
-      method: "POST",
-      url: "https://bc19-2001-2d8-e259-a6fc-605d-18af-8f5b-3813.ngrok-free.app/count",
-      mode: "cors",
-      data: count,
-    });
   };
-  useEffect(() => {
-    axios
-      .post(
-        "https://bc19-2001-2d8-e259-a6fc-605d-18af-8f5b-3813.ngrok-free.app/total"
-      )
-      .then((total) => {
-        // setCountNum(count);
-        console.log(total);
-      });
-  }, [countNum]);
 
   return (
     <div>
